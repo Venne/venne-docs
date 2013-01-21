@@ -22,3 +22,7 @@
 	* [Makra pro práci se soubory a obrázky](venne-docs/tree/master/latte/file-macros.md)
 * Testování
 	* [Testování modulů seleniem](venne-docs/tree/master/tests/selenium.md)
+
+## Tutoriály
+
+* [Tvorba modulu - guestbooku](venne-docs/tree/master/tutorials/guestbook.md)
