@@ -31,7 +31,7 @@ A následně v souboru `composer.json`:
 		},
 		"autoload":{
 			"psr-0":{
-				"FooModule":""
+				"ExampleModule":""
 			}
 		},
 		"extra":{
@@ -48,7 +48,7 @@ A následně v souboru `composer.json`:
 						"example": "ExampleModule\\DI\\ExampleExtension"
 					},
 					"includes": [
-						"%libsDir%/venne/example-module/ExampleModule/Resources/config/config.neon"
+						"%modules.example.path%/Resources/config/config.neon"
 					]
 				}
 			}
