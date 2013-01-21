@@ -2,6 +2,7 @@
 
 * [Vytvoření modulu](venne-docs/tree/master/modules/index.md)
 	* [Presentery](venne-docs/tree/master/modules/presenters.md)
+	* [Widgety](venne-docs/tree/master/modules/widgets.md)
 	* [Konzolové příkazy (commands)](venne-docs/tree/master/modules/commands.md)
 * Venne:CMS
 	* [Registrace presenteru do administrace](venne-docs/tree/master/cms/presenters.md)
