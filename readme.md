@@ -1,28 +1,28 @@
 ## Dokumentace k Venne:CMS a Venne:FRAMEWORK
 
-* [Vytvoření modulu](venne-docs/tree/master/modules/index.md)
-	* [Presentery](venne-docs/tree/master/modules/presenters.md)
-	* [Widgety](venne-docs/tree/master/modules/widgets.md)
-	* [Konzolové příkazy (commands)](venne-docs/tree/master/modules/commands.md)
+* [Vytvoření modulu](modules/index.md)
+	* [Presentery](modules/presenters.md)
+	* [Widgety](modules/widgets.md)
+	* [Konzolové příkazy (commands)](modules/commands.md)
 * Venne:CMS
-	* [Registrace presenteru do administrace](venne-docs/tree/master/cms/presenters.md)
-	* [Registrace nového typu stránky](venne-docs/tree/master/cms/pageType.md)
-	* [Zabezpečení presenterů](venne-docs/tree/master/cms/presenter-protection.md)
-	* [Přílohy v entitách](venne-docs/tree/master/cms/attachments.md)
-	* [Tvorba elementů](venne-docs/tree/master/cms/elements.md)
-	* [Tvorba témat, layoutů, šablon,...](venne-docs/tree/master/cms/themes.md)
+	* [Registrace presenteru do administrace](cms/presenters.md)
+	* [Registrace nového typu stránky](cms/pageType.md)
+	* [Zabezpečení presenterů](cms/presenter-protection.md)
+	* [Přílohy v entitách](cms/attachments.md)
+	* [Tvorba elementů](cms/elements.md)
+	* [Tvorba témat, layoutů, šablon,...](cms/themes.md)
 	* Komponenty
-		* [TableControl](venne-docs/tree/master/cms/components/table.md)
+		* [TableControl](cms/components/table.md)
 	* Moduly
 		* Mailform
-			* [Integrace mailformu do vlastního modulu](venne-docs/tree/master/cms/mailform/integration.md)
-* [Překlady stringů](venne-docs/tree/master/translator.md)
-* [Tvorba formulářů](venne-docs/tree/master/forms.md)
+			* [Integrace mailformu do vlastního modulu](cms/mailform/integration.md)
+* [Překlady stringů](translator.md)
+* [Tvorba formulářů](forms.md)
 * Makra
-	* [Makra pro práci se soubory a obrázky](venne-docs/tree/master/latte/file-macros.md)
+	* [Makra pro práci se soubory a obrázky](latte/file-macros.md)
 * Testování
-	* [Testování modulů seleniem](venne-docs/tree/master/tests/selenium.md)
+	* [Testování modulů seleniem](tests/selenium.md)
 
 ## Tutoriály
 
-* [Tvorba modulu - guestbooku](venne-docs/tree/master/tutorials/guestbook.md)
+* [Tvorba modulu - guestbooku](tutorials/guestbook.md)
