@@ -1,5 +1,7 @@
 ## Dokumentace k Venne:CMS a Venne:FRAMEWORK
 
+* Framework
+	* [Vlastní Latte makra](framework/macros.md)
 * [Vytvoření modulu](modules/index.md)
 	* [Presentery](modules/presenters.md)
 	* [Widgety](modules/widgets.md)
