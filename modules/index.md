@@ -1,5 +1,11 @@
 # Vytvoření modulu
 
+## Vytvoření modulu příkazem
+
+	php www/index.php venne:module:create [foo]
+
+Příkaz vyžaduje práva zápisu do adresáře `vendor/venne`.
+
 ## Definice modulu
 
 Moduly představují balíček rozšíření pro framework, mohou přidávat extenze, šablony, layouty a nejen to. Každý modul musí povinně obsahovat soubor `Module.php` se třídou implementující rozhraní `Venne\Module\IModule`. Abychom takovou třídu nemuseli psát od nuly, můžeme dědit od `Venne\Module\BaseModule` nebo v případě užití composeru můžeme využít třídu `Venne\Module\ComposerModule`, která si načte vše potřebné ze souboru `composer.json`.
@@ -27,7 +33,7 @@ A následně v souboru `composer.json`:
 		...
 
 		"require":{
-			"venne/cms-module":"2.0.x",
+			"venne/cms-module":"2.0.x"
 		},
 		"autoload":{
 			"psr-0":{
