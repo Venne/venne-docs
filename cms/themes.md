@@ -4,12 +4,12 @@ Téma stránky chápeme jako vzhled pro konkrétní web. Může obsahovat defini
 
 ## Konvence
 ### Hlavní obsah stránky (block #content)
-Hlavní obsah stránky je nutné vložit do `<div id="content"> ... </div>`
+Hlavní obsah stránky se nachází v bloku `content`.
 #### Příklad
 
 	...
 	<div id="content">
-		{content}
+		{block #content}
 	</div>
 	...
 
@@ -29,12 +29,12 @@ Pro každý nový projekt je doporučeno vytvořit nový modul, který bude obsa
 
 Nyní máme modul připraven. Přidáme do něj tyto adresáře:
 
-* **`/layouts`:** zde budeme přidávat nové layouty
+* **`/Resources/layouts`:** zde budeme přidávat nové layouty
 * **`/Resources/public`:** adresář slouží pro materiály k HTML. Zde budeme ukládat css a js soubory, obrázky,...
 
 
 ## Tvorba layoutů
-Layouty se nacházejí v adresáři `/layouts` a jeden layout je představován adresářem se stejným jménem a souborem `@layout.latte`, který se v adresáři nachází. (ukázka struktury níže)
+Layouty se nacházejí v adresáři `/Resources/layouts` a jeden layout je představován adresářem se stejným jménem a souborem `@layout.latte`, který se v adresáři nachází. (ukázka struktury níže)
 
 Každý layout má možnost ovlivňovat šablony jiných modulů. Lze tak ovlivnit HTML kód jiného modulu.
 
@@ -48,6 +48,7 @@ Každý layout má možnost ovlivňovat šablony jiných modulů. Lze tak ovlivn
 		* NavigationControl.latte
 		* Blog
 			* List.default.latte
+	* LoginControl.latte
 
 Defaultní layout navíc přetěžuje šablonu pro modul blog a jeho výpis příspěvků a control pro navigaci.
 
@@ -70,7 +71,7 @@ Defaultní layout navíc přetěžuje šablonu pro modul blog a jeho výpis př�
 	{body}
 
 		<div id="content">
-			{content}
+			{block content}
 		</div>
 
 	{/body}
