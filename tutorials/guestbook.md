@@ -293,8 +293,9 @@ V další části zaregistrujeme doctrine repozitáře. Do našeho neon souboru 
 	services:
 	
 		guestbook.commentRepository:
-			class: GuestbookModule\Entities\CommentEntity
-			tags: [repository]
+			class: GuestbookModule\Repositories\CommentRepository
+			factory: @entityManager::getRepository('GuestbookModule\Entities\CommentEntity')
+			tags: [proxy: DoctrineModule\Repositories\BaseRepository]
 
 Tag `repository` zajístí vytvoření služby - repozitáře pracující s námi zadanou entitou. Repozitář pro entitu stránky vytvářet nemusíme, jelikož entita využívá dědění a lze tedy jako repozitář využít službu `@cms.pageRepository`.
 
@@ -400,10 +401,9 @@ Nyní nám už chybí jenom komponenta, která za nás vyřeší editaci koment�
 
 	namespace GuestbookModule\Components;
 	
-	use Venne;
+	use GuestbookModule\Repositories\CommentRepository;
 	use CmsModule\Content\SectionControl;
 	use GuestbookModule\Forms\CommentFormFactory;
-	use DoctrineModule\Repositories\BaseRepository;
 
 	class TableControl extends SectionControl
 	{
@@ -412,10 +412,10 @@ Nyní nám už chybí jenom komponenta, která za nás vyřeší editaci koment�
 
 		protected $commentFormFactory;
 
-		public function __construct(BaseRepository $commentRepository, CommentFormFactory $commentFormFactory)
+		public function __construct(CommentRepository $commentRepository, CommentFormFactory $commentFormFactory)
 		{
 			parent::__construct();
-	
+
 			$this->commentRepository = $commentRepository;
 			$this->commentFormFactory = $commentFormFactory;
 		}
@@ -479,7 +479,7 @@ Na závěr jako tradičně komponentu zaregistrujeme do DIC, tentokrát do sekce
 
 	factories:
 		guestbook.tableControl:
-			class: GuestbookModule\Components\TableControl(@guestbook.commentRepository)
+			class: GuestbookModule\Components\TableControl
 			tags: [component]
 
 Nyní máme vše nachystané, abychom nový typ stránky mohli zaregistrovat do redakčního systému. Opět cesta povede přes několik řádků v lokálním neon souboru:
