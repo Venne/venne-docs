@@ -2,6 +2,7 @@
 
 * Framework
 	* [Vlastní Latte makra](framework/macros.md)
+	* [Registrace rout](framework/routes.md)
 	* [Automaticky generované proxy třídy](framework/proxies.md)
 * [Vytvoření modulu](modules/index.md)
 	* [Presentery](modules/presenters.md)
