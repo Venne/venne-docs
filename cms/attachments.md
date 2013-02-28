@@ -6,8 +6,8 @@
 
 	/**
 	 * @var \CmsModule\Content\Entities\FileEntity
-	 * @OneToOne(targetEntity="\CmsModule\Content\Entities\FileEntity", cascade={"all"}, orphanRemoval=true)
-	 * @JoinColumn(onDelete="SET NULL")
+	 * @ORM\OneToOne(targetEntity="\CmsModule\Content\Entities\FileEntity", cascade={"all"}, orphanRemoval=true)
+	 * @ORM\JoinColumn(onDelete="SET NULL")
 	 */
 	protected $photo;
 
@@ -15,10 +15,10 @@
 
 	/**
 	 * @var \CmsModule\Content\Entities\FileEntity[]
-	 * @ManyToMany(targetEntity="\CmsModule\Content\Entities\FileEntity", cascade={"all"}, orphanRemoval=true)
-	 * @JoinTable(
-	 *      joinColumns={@JoinColumn(referencedColumnName="id")},
-	 *      inverseJoinColumns={@JoinColumn(referencedColumnName="id", unique=true)}
+	 * @ORM\ManyToMany(targetEntity="\CmsModule\Content\Entities\FileEntity", cascade={"all"}, orphanRemoval=true)
+	 * @ORM\JoinTable(
+	 *      joinColumns={@ORM\JoinColumn(referencedColumnName="id")},
+	 *      inverseJoinColumns={@ORM\JoinColumn(referencedColumnName="id", unique=true)}
 	 *      )
 	 **/
 	protected $photos;
