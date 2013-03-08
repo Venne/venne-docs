@@ -1,6 +1,7 @@
 ## Dokumentace k Venne:CMS a Venne:FRAMEWORK
 
 * Framework
+	* [Konfigurace projektu](framework/configuration.md)
 	* [Vlastní Latte makra](framework/macros.md)
 	* [Registrace rout](framework/routes.md)
 	* [Automaticky generované proxy třídy](framework/proxies.md)
