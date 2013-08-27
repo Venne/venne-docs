@@ -1,10 +1,17 @@
 # Vytvoření modulu
 
+- [Vytvoření modulu příkazem](#vytvoření-modulu-příkazem)
+- [Definice modulu](#definice-modulu)
+
+
+
 ## Vytvoření modulu příkazem
 
 	php www/index.php venne:module:create [foo]
 
-Příkaz vyžaduje práva zápisu do adresáře `vendor/venne`.
+Příkaz vyžaduje práva zápisu do adresáře `%modulesDir%`.
+
+
 
 ## Definice modulu
 
@@ -12,54 +19,51 @@ Moduly představují balíček rozšíření pro framework, mohou přidávat ext
 
 Ve většině případu nám postačí vytvořit `Module.php` s obdobným obsahem jako:
 
-	<?php
+```php
+namespace ExampleModule;
 
-	namespace ExampleModule;
+use Venne\Module\ComposerModule;
 
-	use Venne;
-	use Venne\Module\ComposerModule;
-
-	class Module extends ComposerModule
-	{
-
-
-	}
+class Module extends ComposerModule
+{
+}
+```
 
 A následně v souboru `composer.json`:
 
-	{
-		"name":"venne/example-module",
-
-		...
-
-		"require":{
-			"venne/cms-module":"2.0.x"
+```json
+{
+	"name":"venne/example-module",
+	...
+	"require":{
+		"venne/cms-module":"2.0.x"
+	},
+	"autoload":{
+		"psr-0":{
+			"ExampleModule":""
+		}
+	},
+	"extra":{
+		"branch-alias":{
+			"dev-master":"2.0.x-dev"
 		},
-		"autoload":{
-			"psr-0":{
-				"ExampleModule":""
-			}
-		},
-		"extra":{
-			"branch-alias":{
-				"dev-master":"2.0.x-dev"
-			},
-			"venne": {
-				"configuration": {
-					"parameters": {
-						"foo": "bar",
-						"bar": "foo"
-					},
-					"extensions": {
-						"example": "ExampleModule\\DI\\ExampleExtension"
-					},
-					"includes": [
-						"%modules.example.path%/Resources/config/config.neon"
-					]
-				}
+		"venne": {
+			"configuration": {
+				"parameters": {
+					"foo": "bar",
+					"bar": "foo"
+				},
+				"extensions": {
+					"example": "ExampleModule\\DI\\ExampleExtension"
+				},
+				"includes": [
+					"%modules.example.path%/Resources/config/config.neon"
+				]
 			}
 		}
 	}
+}
+```
 
 ### Sekce `autoload`
 

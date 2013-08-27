@@ -1,34 +1,72 @@
 # Tvorba elementů
 
-## Interface `CmsModule\Content\IElement`
+- [Minimální podoba entit](#minimální-podoba-entit)
+- [Příprava komponenty](#příprava-komponenty)
+- [Registrace do CMS](#registrace-do-cms)
 
-Každý element musí implementovat rozhraní z `IElement`.
+Elementy jsou speciální widgety, které se dají editovat přímo na frontendu a slouží jako konfigurovatelné miniaplikace. Elementem můžou být ankety, editovatelné pole a podobně.
 
-## Třída `CmsModule\Content\Elements\BaseElement`
 
-Pro snadnější užití můžeme použít už předpřipravenou třídu `BaseElement`. 
 
-### Ukázka
+## Minimální podoba entit
 
-	class TextElement extends BaseElement
+Obdobně jako u typů stránek se zde vyskytuje tzv. rozšířená entita (`ExtendedElementEntity`), která obsahuje společnou entitu (`ElementEntity`) společnou pro všechny elementy.
+
+Rozšířená entita může vypadat následovně:
+
+```php
+use CmsModule\Content\Elements\ExtendedElementEntity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="\DoctrineModule\Repositories\BaseRepository")
+ * @ORM\Table(name="textElement")
+ */
+class TextEntity extends ExtendedElementEntity
+{
+	/**
+	 * @ORM\Column(type="text")
+	 */
+	protected $text = '';
+
+	public function setText($text)
 	{
-	
-		public function render()
-		{
-			echo 'Hello world!!';
-		}
-	
-	
-		public function renderSetup()
-		{
-			echo 'There is nothing to configure.';
-		}
-	
+		$this->text = $text;
 	}
+
+	public function getText()
+	{
+		return $this->text;
+	}
+}
+```
+
+
+
+## Příprava komponenty
+
+Komponenta je potomkem třídy `CmsModule\Content\Elements\BaseElement`. Jednoduchá ukázka:
+
+```php
+use CmsModule\Content\Elements\BaseElement;
+
+class TextElement extends BaseElement
+{
+	public function renderDefault()
+	{
+		echo 'Hello world!!';
+	}
+
+	public function renderSetup()
+	{
+		echo 'There is nothing to configure.';
+	}
+}
+```
 
 #### Metody
 
-- `render()` - volá se při renderování elementu na frontend
+- `renderDefault()` - volá se při renderování elementu na frontend
 - `renderSetup()` - volá se při renderování nastavení elementu. 
 
 ## Registrace do CMS
@@ -40,17 +78,11 @@ Pro snadnější užití můžeme použít už předpřipravenou třídu `BaseEl
 
 ## Použití v šablonách
 
-### Makro `{element $name $id = NULL}`
+### Makro `{element $name $id}`
 
-	{element foo}
+	{element foo panel}
 	{element foo 10}   
 
-#### Argumenty
-- `name` - povinný, jméno elementu k zobrazení
-- `id` - integer, nepovinný, v případě vynechání se použije inkrementovaná hodnota od 0.
+### Zobrazení nastavení přímo v šabloně
 
-#### Zobrazení nastavení přímo v šabloně
-
-	{element foo:setup}   
-
- 
+	{element foo:setup}

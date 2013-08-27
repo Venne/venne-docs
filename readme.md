@@ -10,12 +10,12 @@
 	* [Konzolové příkazy (commands)](framework/commands.md)
 	* [Vytvoření modulu](framework/modules.md)
 * Venne:CMS
-	* [Registrace presenteru do administrace](cms/presenters.md)
-	* [Registrace nového typu stránky](cms/pageType.md)
+	* [Tvorba témat, layoutů, šablon,...](cms/themes.md)
+	* [Tvorba vlastních typů front-end stránek](cms/pageType.md)
+	* [Tvorba elementů](cms/elements.md)
+	* [Tvorba administračních sekcí](cms/presenters.md)
 	* [Zabezpečení presenterů](cms/presenter-protection.md)
 	* [Přílohy v entitách](cms/attachments.md)
-	* [Tvorba elementů](cms/elements.md)
-	* [Tvorba témat, layoutů, šablon,...](cms/themes.md)
 	* Komponenty
 		* [TableControl](cms/components/table.md)
 	* Moduly

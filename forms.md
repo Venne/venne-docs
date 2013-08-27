@@ -35,20 +35,20 @@ Abychom dostali do formuláře své vlastní nové typy inputu, stačí jednodu�
 		{
 			$this->form = $form;
 		}
-	
+
 		public function getControls()
 		{
 			return array(
 				'one', 'two'
 			);
 		}
-	
+
 		public function addOne($name)
 		{
 			return $this->form[$name] = new MyOne;
 		}
-	
-	
+
+
 		public function addTwo($name, $containerFactory, $entityFactory = NULL)
 		{
 			return $this->form[$name] = new MyTwo($containerFactory, $entityFactory);

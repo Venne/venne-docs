@@ -2,32 +2,34 @@
 
 ## Ukázka
 
+```php
+/**
+ * @secured
+ */
+class BasePresenter extends \CmsModule\Presenters\AdminPresenter
+{
+	...
 	/**
-	 * @secured
+	 * @secured(privilege="write")
 	 */
-	class BasePresenter extends \CmsModule\Presenters\AdminPresenter
+	public function handleDelete()
 	{
-		...
-		/**
-		 * @secured(privilege="write")
-		 */
-		public function handleDelete()
-		{
-			$this->user->logout(true);
-			$this->flashMessage('Item has been deleted.', 'success');
-			$this->redirect('this');
-		}
-		...
-		/**
-		 * @secured(roles="writer, poster")
-		 */
-		public function handleDelete()
-		{
-			$this->user->logout(true);
-			$this->flashMessage('Item has been deleted.', 'success');
-			$this->redirect('this');
-		}
+		$this->user->logout(true);
+		$this->flashMessage('Item has been deleted.', 'success');
+		$this->redirect('this');
 	}
+	...
+	/**
+	 * @secured(roles="writer, poster")
+	 */
+	public function handleDelete()
+	{
+		$this->user->logout(true);
+		$this->flashMessage('Item has been deleted.', 'success');
+		$this->redirect('this');
+	}
+}
+```
 
 ### Annotace `secured($resource=NULL, $privilege=NULL, $roles=array(), $users=array())` nad třídou
 

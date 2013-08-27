@@ -1,8 +1,10 @@
-# Registrace presenteru do administrace
+# Tvorba administračních sekcí
+
+Stránky administrace jsou tvořeny presentery dědícími od třídy `CmsModule\Administration\AdminPresenter`. Obdobně jako obyčejné presentery musí být jejich továrna označena tagem `presenter` a navíc tagem `administration`, který obsahuje informace o zařazení do navigace.
 
 ## Registrace do CMS
 
-	services:
+	factories:
 	
 		cms.admin.languagePresenter:
 			class: CmsModule\Administration\Presenters\LanguagePresenter(@cms.languageRepository, ..., @cms.languageFormFactory)
