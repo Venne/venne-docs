@@ -60,16 +60,16 @@ V našich aplikací budeme nejšastěji používat předpřipravenou službu `@m
 	{
 	
 		/** @var Callback */
-		protected $mailConotrolFactory;
+		protected $mailControlFactory;
 		
-		public function injectFormFactory(Callback $mailConotrolFactory)
+		public function injectFormFactory(Callback $mailControlFactory)
 		{
-			$this->mailConotrolFactory = $mailConotrolFactory;
+			$this->mailControlFactory = $mailControlFactory;
 		}
 		
 		public function createComponentOrderForm()
 		{
-			$control = $this->mailConotrolFactory->invoke($this->page->mailform); # první argument představuje entitu mailformu
+			$control = $this->mailControlFactory->invoke($this->page->mailform); # první argument představuje entitu mailformu
 			$control->onSuccess[] = $this->formSuccess;
 			return $control;
 		}
