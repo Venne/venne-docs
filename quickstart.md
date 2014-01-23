@@ -124,3 +124,67 @@ Layout `main` (`Resources\layouts\main\@layout.latte`):
 	</small>
 </div>
 ```
+
+
+#### Konvence
+
+1. Textový obsah se vkládá pomocí `{block #content}{include #page-content}{/block}`.
+2. Víceúrovňový layout se řeší pomocí bloku `#layout`.
+3. Hlavní nadpis stránky se vkládá do bloku `#title`.
+4. Hlavička webu obsahuje blok `#head`.
+
+
+### Šablona presenteru
+
+Jména souborů šablon presenterů frontendových stránek mají tvar `Resources/layouts/@<type>.<presenterName>[.<view>].latte`. Tedy například `@text.route.latte`. Jestliže chceme změnit HTML kód nějaké frontend stránky, zkopírujeme soubor s originální šablonou do adresáře s tématem, případně přímo ke konkrétnímu layoutu. 
+
+
+### Šablona komponent
+
+Následující pravidla platí pro komponenty dědící ze třídy `CmsModule\Content\Control`, tedy převážně pro widgety, elementy a podobně.
+
+Tyto třídy mají své originální šablony uloženy vedle souboru s PHP kódem. Tedy například `NavigationControl.php` má šablonu v souboru `NavigationControl.latte`.
+
+Chceme-li ve vlastním layoutu pozměnit vzhled komponenty, opět využijeme následující priority ve vyhledávání šablony:
+
+- `<$presenterTemplatePath>/<$controlName>Control.<$variant>.latte`
+- `<$presenterTemplatePath>/<$controlName>Control.latte`
+- `<$layoutPath>/<$controlName>Control.<$variant>.latte`
+- `<$layoutPath>/<$controlName>Control.latte`
+- `<$presenterTemplatePath>/../<$controlName>Control.<$variant>.latte`
+- `<$presenterTemplatePath>/../<$controlName>Control.latte`
+- `<$layoutPath>/../<$controlName>Control.<$variant>.latte`
+- `<$layoutPath>/../<$controlName>Control.latte`
+- `./<$class>.latte`
+
+
+#### Varianty šablon
+
+Vzhledem k tomu, že komponenta může být na rozdíl od presenteru na stránce vykreslena několikrát, můžeme se setkat s požadavkem, aby stejná komponenta byla na stránce vykreslena pokaždé s jinou šablonou. Toho lze dosáhnout snadno. Třída `CmsModule\Content\Control` nabízí nastavení `varianty` zobrazení pomocí následující syntaxe:
+
+```php
+{control navigation config => [variant => 'foo']}
+```
+
+Šablona se dohledává dle výše zmíněného pořadí.
+
+
+### Předpřipravené widgety
+
+Venne:CMS obsahuje několik předpřipravených widgetů, které lze v šablonách využít. Jestliže bychom chtěli upravit HTML kód některého widgetu, překopírujeme originální šablonu do aktuálního tématu, případně ke konkrétnímu layoutu.
+
+```php
+{control navigation 0, 2, FALSE, $rootEntity} # navigace
+{control breadcrumb}                          # drobečková navigace
+{control tagCloud}                            # vykreslení mraku tagů
+{control flashMessage}                        # výpis zpráv
+{control head}                                # HTML hlavička
+{control languageswitch}                      # přepínač jazyků
+{control login}                               # login form
+{control search}                              # pole pro vyhledávání
+{control item $presenter->route}              # vykreslení obsahu routy
+{control itemInfo $presenter->route}          # vykreslení informací o routě
+{control itemThumbnail $presenter->route}     # ikona routy
+{control itemList $routes}                    # vykreslení seznamu rout
+{control author $presenter->route}            # zobrazení autora routy
+```
